@@ -12,8 +12,8 @@ public class Viagem {
 	public Viagem() {
 		
 	}
-	public Viagem(LocalDate data, double valor, String origem, String destino, Pessoa pessoa, Veiculo veiculo) {
-		this.data = data;
+	public Viagem( double valor, String origem, String destino, Pessoa pessoa, Veiculo veiculo) {
+		this.data = data.now();
 		this.valor = valor;
 		this.origem = origem;
 		this.destino = destino;
