@@ -11,21 +11,18 @@ import br.com.fiap.checkpoint.model.Veiculo;
 import br.com.fiap.checkpoint.model.Viagem;
 
 public class Aplicacao {
-	public final static int NUM = 7;
-	public static Pessoa pessoas[];
-	public static Veiculo veiculos[] = new Veiculo[NUM];
-	public static Viagem viagens[] = new Viagem[NUM];
+
 	// public static int iniPessoas=0, iniMotoristas=0, iniViagens=0;
 
 	public static void main(String[] args) {
 
-		Pessoa carlos = new Pessoa("Carlos", "199.222.333-44", "(11)98757483");
-		Pessoa marcelo = new Pessoa("Marcelo", "122.333.333-44", "(11)98733383");
-		Pessoa henrique = new Pessoa("Henrique", "200.200.200-44", "(11)999999999");
-		Pessoa matheus = new Pessoa("Matheus", "199.199.111-44", "(12)92754583");
-		Pessoa joao = new Pessoa("Jo�o", "439.243.234-56", "(15)98750296");
-		Pessoa leandro = new Pessoa("Leandro", "199.456.233-50", "(11)987562431");
-		Pessoa lucca = new Pessoa("Lucca", "124.556.233-51", "(12)987652831");
+		Pessoa pessoas[] = { new Pessoa("Carlos", "199.222.333-44", "(11)98757483"),
+				new Pessoa("Marcelo", "122.333.333-44", "(11)98733383"),
+				new Pessoa("Henrique", "200.200.200-44", "(11)999999999"),
+				new Pessoa("Matheus", "199.199.111-44", "(12)92754583"),
+				new Pessoa("Jo�o", "439.243.234-56", "(15)98750296"),
+				new Pessoa("Leandro", "199.456.233-50", "(11)987562431"),
+				new Pessoa("Lucca", "124.556.233-51", "(12)987652831") };
 
 		Motorista felipeMotorista = new Motorista("456789", "A", "Felipe", "439.333.234-56", "(11)987562000");
 		Motorista renanMotorista = new Motorista("406709", "C", "Renan", "589.343.234-11", "(11)917262001");
@@ -35,22 +32,30 @@ public class Aplicacao {
 		Motorista viniciusMotorista = new Motorista("100789", "C", "Vinicius", "500.300.200-78", "(11)918561000");
 		Motorista souzaMotorista = new Motorista("520719", "A", "Souza", "100.300.200-78", "(91)918561111");
 
-		Veiculo souzaCar = new Veiculo("444dddd", "corsa", "Chevrolet", 2010, souzaMotorista);
-		Veiculo viniciusCar = new Veiculo("224dfdd", "UNO", "Fiat", 2010, viniciusMotorista);
-		Veiculo pedroCar = new Veiculo("412wdcf", "	GOL", "Wolkswagen", 2010, pedroMotorista);
-		Veiculo gabrielCar = new Veiculo("4414vfdd", "fusca", "Wolkswagen", 2010, gabrielMotorista);
-		Veiculo luisCar = new Veiculo("455ddln", "corolla", "Toyota", 2010, luisMotorista);
-		Veiculo renanCar = new Veiculo("546dkjd", "Ferrari F8", "Ferrari", 2010, renanMotorista);
-		Veiculo felipeCar = new Veiculo("748dghd", "Etios sedan", "Toyota", 2010, felipeMotorista);
-		
-		for(int i=0; i<NUM; i++) {
-			
-			String origem = JOptionPane.showInputDialog(null,"Informe a origem");
-			String destino = JOptionPane.showInputDialog(null,"Infome o destino");
-			
-			
-			
-			viagens[i] = new Viagem (new Random().nextInt(101), origem, destino, pessoas[i], veiculos[new Random().nextInt(NUM+1)]);
+		Veiculo veiculos[] = { new Veiculo("444dddd", "corsa", "Chevrolet", 2010, souzaMotorista),
+				new Veiculo("224dfdd", "UNO", "Fiat", 2010, viniciusMotorista),
+				new Veiculo("412wdcf", "	GOL", "Wolkswagen", 2010, pedroMotorista),
+				new Veiculo("4414vfdd", "fusca", "Wolkswagen", 2010, gabrielMotorista),
+				new Veiculo("455ddln", "corolla", "Toyota", 2010, luisMotorista),
+				new Veiculo("546dkjd", "Ferrari F8", "Ferrari", 2010, renanMotorista),
+				new Veiculo("748dghd", "Etios sedan", "Toyota", 2010, felipeMotorista) };
+
+		for (int i = 0; i < veiculos.length; i++) {
+
+			String origem = JOptionPane.showInputDialog(null, pessoas[i].getNome() + " porfavor! \nInforme a origem");
+			String destino = JOptionPane.showInputDialog(null, pessoas[i].getNome() + " porfavor! \nInfome o destino");
+
+			Viagem viagem = new Viagem(new Random().nextInt(101), origem, destino, pessoas[i],
+					veiculos[new Random().nextInt(veiculos.length + 1)]);
+
+			String resposta = "Cliente: " + viagem.getPessoa().getNome() +"\n\nData da viagem: "+ viagem.getData()+"\n\nOrigem: " + viagem.getOrigem()
+					+ "\nDestino: " + viagem.getDestino() + "\n\nValor da corrida: " + viagem.getValor()
+					+ " R$ \n\nMotorista: " + viagem.getVeiculo().getMotorista().getNome() + " | Classe: "
+					+ viagem.getVeiculo().getMotorista().getCategoria() + "\n\nCarro: "
+					+ viagem.getVeiculo().getModelo() + " " + viagem.getVeiculo().getAno() + " | Placa: "
+					+ viagem.getVeiculo().getPlaca() + "\nContato: " + viagem.getVeiculo().getMotorista().getCelular();
+
+			JOptionPane.showMessageDialog(null, resposta);
 		}
 
 	}
