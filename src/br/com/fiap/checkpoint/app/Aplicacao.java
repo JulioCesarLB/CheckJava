@@ -46,7 +46,7 @@ public class Aplicacao {
 			String destino = JOptionPane.showInputDialog(null, pessoas[i].getNome() + " porfavor! \nInfome o destino");
 
 			Viagem viagem = new Viagem(new Random().nextInt(101), origem, destino, pessoas[i],
-					veiculos[new Random().nextInt(veiculos.length + 1)]);
+					veiculos[new Random().nextInt(veiculos.length)]);
 
 			String resposta = "Cliente: " + viagem.getPessoa().getNome() +"\n\nData da viagem: "+ viagem.getData()+"\n\nOrigem: " + viagem.getOrigem()
 					+ "\nDestino: " + viagem.getDestino() + "\n\nValor da corrida: " + viagem.getValor()
