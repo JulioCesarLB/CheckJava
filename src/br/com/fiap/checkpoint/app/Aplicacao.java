@@ -3,7 +3,7 @@ package br.com.fiap.checkpoint.app;
 import java.time.LocalDate;
 import java.util.Random;
 
-import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.*;
 
 import br.com.fiap.checkpoint.model.Motorista;
 import br.com.fiap.checkpoint.model.Pessoa;
@@ -42,8 +42,8 @@ public class Aplicacao {
 
 		for (int i = 0; i < veiculos.length; i++) {
 
-			String origem = JOptionPane.showInputDialog(null, pessoas[i].getNome() + " porfavor! \nInforme a origem");
-			String destino = JOptionPane.showInputDialog(null, pessoas[i].getNome() + " porfavor! \nInfome o destino");
+			String origem = showInputDialog(null, pessoas[i].getNome() + " porfavor! \nInforme a origem");
+			String destino = showInputDialog(null, pessoas[i].getNome() + " porfavor! \nInfome o destino");
 
 			Viagem viagem = new Viagem(new Random().nextInt(101), origem, destino, pessoas[i],
 					veiculos[new Random().nextInt(veiculos.length)]);
@@ -55,7 +55,7 @@ public class Aplicacao {
 					+ viagem.getVeiculo().getModelo() + " " + viagem.getVeiculo().getAno() + " | Placa: "
 					+ viagem.getVeiculo().getPlaca() + "\nContato: " + viagem.getVeiculo().getMotorista().getCelular();
 
-			JOptionPane.showMessageDialog(null, resposta);
+			showMessageDialog(null, resposta);
 		}
 
 	}
